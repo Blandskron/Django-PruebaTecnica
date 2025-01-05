@@ -1,0 +1,7 @@
+<h2>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Producto</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+<a href="{% url 'producto_list' %}">Volver</a>
