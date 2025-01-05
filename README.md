@@ -1,0 +1,2 @@
+# Django-PruebaTecnica
+Proyecto educativo
