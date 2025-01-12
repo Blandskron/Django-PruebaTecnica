@@ -1,7 +1,29 @@
-<h2>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Producto</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar</button>
-</form>
-<a href="{% url 'producto_list' %}">Volver</a>
+{% extends 'base.html' %}
+
+{% block title %}{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Producto{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Tarjeta para crear o editar producto -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-warning text-white text-center">
+                    <h2 class="mb-0">{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Producto</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Formulario para crear o editar -->
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-warning btn-block">Guardar</button>
+                    </form>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{% url 'producto_list' %}" class="btn btn-outline-warning">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

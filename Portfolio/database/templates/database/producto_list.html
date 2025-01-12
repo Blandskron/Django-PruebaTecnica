@@ -1,11 +1,32 @@
-<h2>Productos</h2>
-<a href="{% url 'producto_create' %}">Crear Producto</a>
-<ul>
-    {% for producto in productos %}
-        <li>
-            {{ producto.nombre }} - ${{ producto.precio }}
-            <a href="{% url 'producto_update' producto.pk %}">Editar</a>
-            <a href="{% url 'producto_delete' producto.pk %}">Eliminar</a>
-        </li>
-    {% endfor %}
-</ul>
+{% extends 'base.html' %}
+
+{% block title %}Productos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Tarjeta para lista de productos -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-info text-white text-center">
+                    <h2 class="mb-0">Productos</h2>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'producto_create' %}" class="btn btn-info btn-block mb-4">Crear Producto</a>
+                    <ul class="list-group">
+                        {% for producto in productos %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>{{ producto.nombre }} - ${{ producto.precio }}</span>
+                                <span>
+                                    <a href="{% url 'producto_update' producto.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="{% url 'producto_delete' producto.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                                </span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

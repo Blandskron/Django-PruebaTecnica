@@ -1,6 +1,26 @@
-<h2>Contáctame</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
+{% extends 'base.html' %}
+
+{% block title %}Contáctame{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Tarjeta para el formulario de Contacto -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-info text-white text-center">
+                    <h2 class="mb-0">Contáctame</h2>
+                </div>
+                <div class="card-body">
+                    <!-- Formulario de Contacto -->
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-info btn-block">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

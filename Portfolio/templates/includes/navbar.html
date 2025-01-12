@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'producto_list' %}">Mi Proyecto</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+                <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'producto_list' %}">Inicio <span class="sr-only">(actual)</span></a>
+                </li>
+                <li class="nav-item {% if request.path == '/dashboard/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                </li>
+            {% endif %}
+            
+            <li class="nav-item {% if request.path == '/reporte-ventas/' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'reporte_ventas' %}">Reporte de Ventas</a>
+            </li>
+            <li class="nav-item {% if request.path == '/contacto/' %}active{% endif %}">
+                <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
+            </li>
+            {% if not user.is_authenticated %}
+                <li class="nav-item {% if request.path == '/register/' or request.path == '/login/' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

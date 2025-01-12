@@ -1,6 +1,25 @@
-<h2>¿Estás seguro de que deseas eliminar "{{ producto.nombre }}"?</h2>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Eliminar</button>
-</form>
-<a href="{% url 'producto_list' %}">Cancelar</a>
+{% extends 'base.html' %}
+
+{% block title %}Confirmar Eliminación{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Tarjeta de confirmación de eliminación -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-danger text-white text-center">
+                    <h2 class="mb-0">¿Estás seguro de que deseas eliminar "{{ producto.nombre }}"?</h2>
+                </div>
+                <div class="card-body text-center">
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-lg">Eliminar</button>
+                        <a href="{% url 'producto_list' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
